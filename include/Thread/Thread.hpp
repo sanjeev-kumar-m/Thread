@@ -10,10 +10,10 @@
 #include <signal.h>
 
 namespace Thread {
-  enum class ThreadStatus {
-    ThreadStatusOk,
-    ThreadStatusFailed,
-    ThreadStatusAlreadyStarted,
+  enum class ThreadStatus : uint8_t {
+    Ok,
+    Failed,
+    AlreadyStarted,
   };
 
   class Thread {
@@ -38,10 +38,10 @@ namespace Thread {
      * This function used to start the thread execution
      */
     ThreadStatus run() {
-      if (_m_thread_id != -1) return ThreadStatus::ThreadStatusAlreadyStarted;
+      if (_m_thread_id != -1) return ThreadStatus::AlreadyStarted;
       if (pthread_create(&_m_thread_id, nullptr,
-          &start_thread, this) == -1) return ThreadStatus::ThreadStatusFailed;
-      return ThreadStatus::ThreadStatusOk;
+          &start_thread, this) == -1) return ThreadStatus::Failed;
+      return ThreadStatus::Ok;
     }
 
    protected:

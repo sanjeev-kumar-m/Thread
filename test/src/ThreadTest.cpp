@@ -14,7 +14,7 @@ class NaturalNumberGenerator : public Thread::Thread {
 
 int main() {
   NaturalNumberGenerator nm;
-  if (nm.run() != Thread::ThreadStatus::ThreadStatusOk) {
+  if (nm.run() != Thread::ThreadStatus::Ok) {
     std::cout << "Failed to create thread" << std::endl;
   }
   std::this_thread::sleep_for(std::chrono::milliseconds(1000));
