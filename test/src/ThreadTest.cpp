@@ -5,10 +5,14 @@
 
 class NaturalNumberGenerator : public Thread::Thread {
   protected:
-    void thread_main() {
+    void thread_main() override {
       for(int i =0; i < 10; ++i) {
         std::cout << "i : " << i << std::endl;
       }
+    }
+
+    void stop() override {
+      return;
     }
 };
 
